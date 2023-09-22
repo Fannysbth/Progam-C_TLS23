@@ -1,0 +1,117 @@
+#include <iostream>
+#include <stdlib.h>
+#include <string>
+
+using namespace std;
+
+int main()
+ {
+ 	
+	int harga_jual [100], harga_beli [100], jual=3, i, j, subtotal=0, Jumlah=0, s, jumlah_beli[100], tunai,  beli;
+	float Total=0, kembalian;
+	string nama, status, barang_jual[100], barang_beli[100], jawaban;
+	barang_jual[1]= "ayam";		harga_jual [1]= 10000;
+	barang_jual[2]= "nasi";		harga_jual [2]= 15000;
+	barang_jual[3]= "indomi";	harga_jual [3]= 8000;
+	cout<< "SEGALA MACAM INPUT \nTIDAK BOLEH HURUF KAPITAL ATAU CAPSLOCK \nPRESS ANY KEY TO CONTINUE.....";
+	cin.get();
+	awal:
+	system ("cls");
+    cout << "----- RUMAH MAKAN GOODMAN ------\n";
+    cout << "================================"<<endl;
+    cout << "\t LOGIN"<<endl;
+    cout << "-------------------------------"<<endl;
+    cout << "Nama\t:"; cin >> nama;
+	cout << "Ingin beli atau jual [b/j]:"; cin >> status; cout << "\n";
+	
+	if ( status == "j")
+	{
+		system ("cls");
+		cout << "================================"<<endl;
+		cout << "\t MENU"<<endl;
+		cout << "-------------------------------"<<endl;
+		cout << "1. "<< barang_jual[1]<<"\t"<<harga_jual [1]<<endl;
+		cout << "2. "<< barang_jual[2]<<"\t"<<harga_jual [2]<<endl;
+		cout << "3. "<< barang_jual[3]<<"\t"<<harga_jual [3]<<endl;
+		cout << "================================"<<endl;
+		cout << "Apakah ingin menambah menu [y/t]:"; cin>> jawaban; cout<<"\n";
+		if ( jawaban == "y") 
+		{		
+			cout << "Jumlah barang yang diinput:"; cin>> jual; 
+			jual=jual+3;
+			for (i=4; i<=jual; i++)
+			{ 
+				cout << "-------------------------------"<<endl;
+				cout << "Nama barang\t:"; cin >> barang_jual[i];
+				cout << "\nHarga barang\t:";cin >> harga_jual[i]; cout<< endl; 		
+			}
+			cout << "================================"<<endl;
+			cout << "Terima kasih data anda telah terinput"<<endl;
+			cout << "Apakah ingin kembali ke menu utama [y/t]:"; cin>> jawaban; cout<<"\n";
+			if ( jawaban == "y") goto awal;
+			else goto akhir;
+		}
+		else 
+		{
+			cout << "Apakah ingin kembali ke menu utama [y/t]:"; cin>> jawaban; cout<<"\n";
+			if ( jawaban == "y") goto awal;
+			else goto akhir;
+		}
+	}
+	
+	else if (status == "b")
+	{
+		system ("cls");
+		cout << "================================"<<endl;
+		cout << "\t MENU"<<endl;
+		cout << "-------------------------------"<<endl;
+		cout << "1. "<< barang_jual[1]<<"\t"<<harga_jual [1]<<endl;
+		cout << "2. "<< barang_jual[2]<<"\t"<<harga_jual [2]<<endl;
+		cout << "3. "<< barang_jual[3]<<"\t"<<harga_jual [3]<<endl;
+		if (jual!=3)
+		{
+			for (s=4; s<=jual; s++)
+			{
+				cout<<s<<". "<< barang_jual[s]<<"\t"<< harga_jual[s]<<endl;
+			}	
+		}
+		cout << "================================"<<endl;
+		cout << "Jumlah jenis barang yang dibeli:"; cin>> beli; cout <<endl;
+		cout << "================================"<<endl;
+		for (j=1; j<=beli; j++)	
+		{
+			cout << "-------------------------------"<<endl;
+			cout << "Nama barang\t:"; cin >> barang_beli[j];
+			cout << "Harga barang\t:"; cin >> harga_beli[j]; 
+			cout << "Jumlah barang\t:";cin >> jumlah_beli[j]; 
+			Jumlah= Jumlah+jumlah_beli[j];
+			subtotal= subtotal+(jumlah_beli[j]*harga_beli[j]);
+		}
+		
+		system ("cls");
+		cout << "================================"<<endl;
+		cout << "\t\t STRUK"<<endl;
+		cout << "-------------------------------"<<endl;
+		Total= subtotal*0.01;
+		cout << "================================"<<endl;
+		cout << "Jumalah item \t:"<< Jumlah<<endl;
+		cout << "Subtotal harga \t:"<< subtotal<< endl;
+		cout << "PPN \t:"<< Total << endl;
+		Total= subtotal+Total;
+		cout << "Total pembayaran \t:" << Total<< endl;
+		cout << "-------------------------------"<<endl;
+		cout << "Uang tunai \t:"; cin>> tunai; 
+		kembalian= tunai-Total;
+		cout << "Uang kembalian \t:"<< kembalian<< endl;
+		cout << "================================"<<endl;
+		cout << "TERIMA KASIH ATAS KUNJUNGAN ANDA"<<endl;
+		cout << "================================"<<endl;
+		cout << "Apakah ingin kembali ke menu utama [Y/T]:"; cin>> jawaban; cout<<"\n";
+		
+		if ( jawaban == "Y"||jawaban == "y") goto awal;
+		else goto akhir;			
+	}
+	
+	akhir:
+    return 0;
+}
